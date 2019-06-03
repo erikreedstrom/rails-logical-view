@@ -1,0 +1,66 @@
+<main>
+  <header class="randoms__header">
+    <h1 class="randoms__header-title">Random People Generator</h1>
+    Generated
+    <span class="randoms__header-count badge"><%= randoms.count %></span> people in
+    <span class="randoms__header-count badge"><%= elapsed_millis.round(2) %></span> milliseconds.
+  </header>
+  <aside class="randoms__stats">
+    <h2>Stats</h2>
+    <section class="randoms__stats-spend">
+      <h3 class="randoms__stats-section-title">Spend</h3>
+      <p>Various data points on random people spending.</p>
+      <div class="randoms__stats-spend-data">
+        <h4>Total Spend</h4>
+        <p>
+          <%= format_usd(sum_spend(randoms)) %> USD
+        </p>
+      </div>
+      <div class="randoms__stats-spend-data">
+        <h4>Avg. Spend</h4>
+        <p>
+          <%= format_usd(avg_spend(randoms)) %> USD
+        </p>
+      </div>
+      <div>
+        <h4>Min/Max Spend</h4>
+        <ul class="randoms__stats-spend-minmax">
+          <%- mm = minmax_spenders(randoms) %>
+          <% mm.each_with_index do |r, i| %>
+            <li class="random-spender random-spender--<%= i == 0 ? "min" : "max" %>">
+              <div class="random-spender-banner">
+                <%= i == 0 ? "Lowest" : "Highest" %>
+              </div>
+              <div class="random-spender-avatar">
+                <img src="<%= r.avatar %>" alt="avatar"/>
+              </div>
+              <div class="random-spender-name"><%= r.name %></div>
+              <div class="random-spender-spend"><%= format_usd(r.spend) %> USD</div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+    </section>
+    <section class="randoms__stats-vowels">
+      <h3 class="randoms__stats-section-title">Vowel Counts</h3>
+      <p>The number of vowels in people's names, grouped by letter.</p>
+      <ul class="randoms__stats-vowel-list">
+        <% vowel_counts(randoms).each do |k, v| %>
+          <li class="randoms__stats-vowel">
+            <span class="randoms__stats-vowel-name">Letter <%= k.upcase %>:</span>
+            <%= v %>
+          </li>
+        <% end %>
+      </ul>
+    </section>
+  </aside>
+  <section class="randoms__body">
+    <h2>Random People</h2>
+    <ul class="random-list">
+      <% randoms.each do |random| %>
+        <%= render partial: 'random_person_list_item', locals: { random: random, winner_id: winner_id } %>
+      <% end %>
+    </ul>
+  </section>
+</main>

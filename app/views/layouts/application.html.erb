@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="auto">
   <head>
-    <title>LogicalView</title>
+    <title><%= title(local_assigns) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0' name='viewport'>
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="<%= template_class_names(params[:controller], params[:action]) %>">
     <%= yield %>
   </body>
 </html>

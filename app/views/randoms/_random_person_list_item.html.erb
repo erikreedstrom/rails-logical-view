@@ -1,0 +1,17 @@
+<%- is_winner = winner?(random.id, local_assigns) %>
+<li class="random-list__item <%= "random-list__item--winner" if is_winner %>">
+  <% if is_winner %>
+    <div class="random-list__item-banner">Winner!</div>
+  <% end %>
+  <div class="random-list__item-avatar">
+    <img src="<%= random.avatar %>" alt="avatar"/>
+  </div>
+  <div class="random-list__item-name"><h3><%= random.name %></h3></div>
+  <div class="random-list__item-email"><%= random.email %></div>
+  <div class="random-list__item-spend">
+    Spend:
+    <span class="badge random-list__item-spend-value random-list__item-spend-value--<%=random.spend < 100 ? "low" : "normal" %>">
+      <%= format_usd(random.spend) %>
+    </span>
+  </div>
+</li>
