@@ -138,7 +138,7 @@ variables defined in the controller are available, as one would expect.
 Although controllers may define a single view context module, the controller will also lookup its layout and 
 additionally include a corresponding context if it has been defined.
 
-These typically are located under `view_contexts/layouts` and are namespaced under `Layouts`. There main use
+These typically are located under `view_contexts/layouts` and are namespaced under `Layouts`. Their main use
 is to provide layout-wide functionality common to multiple views.
 
 **view_contexts/layouts/application_view_context.rb**
