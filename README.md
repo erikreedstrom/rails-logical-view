@@ -18,7 +18,7 @@ renderer will render the template, and is where the route and other helpers are 
 > **What is a view, and why does it need context?**
 >
 > Rails defines a view as the markup being rendered. In many frameworks this is called the _Template_. 
-> The code behind the template — _see what I did there .NET guys_? — is what is typically called the _View_; 
+> The code behind the template is what is typically called the _View_; 
 > however, we'll stick with Rails nomenclature. In Rails, this is known as the _ViewContext_.
 
 ### A Custom ViewContext
